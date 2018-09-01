@@ -1,0 +1,2 @@
+https://nodemcu-build.com/
+中填写邮箱地址，然后会有对应的文件bin
