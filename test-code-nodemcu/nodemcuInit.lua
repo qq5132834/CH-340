@@ -3,7 +3,7 @@ nodemcuInit = {}
 
 --
 cfg={}
-cfg.ssid="ESP8266-smart-car"
+cfg.ssid="ESP8266-AP"
 cfg.pwd="1234567890"
 
 --
