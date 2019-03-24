@@ -1,19 +1,20 @@
-require("stringUtil")
+--require("stringUtil")
 require("nodemcuInit")
-require("socketServer")
+require("apTcpServer")
+--require("socketServer")
 
-
---初始化nodemcu模块
 nodemcuInit.init()
+apTcpServer.createServer()
+
 --创建一个socketServer服务器
-socketServer.createServer()
+--socketServer.createServer()
 
 --local list = stringUtil.split("hello=world","=")
 --print(list[1])
 --print(list[2])
 
-print("\n")
-print("ESP8266 Started")
+--print("\n")
+--print("ESP8266 Started")
 
 --
 

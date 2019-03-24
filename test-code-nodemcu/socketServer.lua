@@ -104,7 +104,7 @@ end
 
 --自动连接P2P服务器
 function autoLinkP2PServer()
-    serverIP = "192.168.0.115"
+    serverIP = "192.168.0.105"
     port = 8090
     if(p2pNodemcuClient == nil) then
 
