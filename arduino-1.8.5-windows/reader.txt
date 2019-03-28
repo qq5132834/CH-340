@@ -1,0 +1,2 @@
+CH341SER.EXE
+这个驱动貌似也符合arduino1.8.5在window64下的驱动使用。
