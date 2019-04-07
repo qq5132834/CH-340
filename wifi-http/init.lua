@@ -37,11 +37,49 @@ wifi.setmode(wifi.STATIONAP)
 wifi.ap.setip(cfo)
 wifi.ap.config(cfg)
 
+
+
 httpServer:listen(80)
 
 
+nodemcuClient = nil
+nodemcuClientRequest = 0
 httpServer:use('/createClient', function(req,res)
-        
+
+    serverIP = req.query.serverIP
+    port = req.query.port
+
+  --  print(serverIP)
+  --  print(port)
+
+    if(nodemcuClient == nil) then
+        nodemcuClientRequest = 0
+        nodemcuClient = net.createConnection(net.TCP,0)
+        nodemcuClient:connect(port,serverIP)
+        nodemcuClient:on("receive", function(sck, data)          
+            print(data)
+        end)
+        nodemcuClient:on("connection",function(sck,data)
+            print("p2p-connected")
+            res:type('application/json')
+            res:send('{"status":"yes"}')
+            nodemcuClientRequest = 1
+        end)
+        nodemcuClient:on("disconnection",function(sck,data)
+            nodemcuClient = nil
+            print("p2p-disconnected")
+            if(nodemcuClientRequest==1) then
+
+            else
+                res:type('application/json')
+                res:send('{"status":"no"}')
+            end
+            
+        end)
+    else
+        res:type('application/json')
+        res:send('{"status":"yes"}')
+    end
     
 end)
 
@@ -88,7 +126,7 @@ end)
 -------------
 -- http link internet wifi
 -------------
-wifi.sta.autoconnect(0)
+wifi.sta.autoconnect(1)
 httpServer:use('/config', function(req, res)
 
 	if req.query.ssid ~= nil and req.query.pwd ~= nil then
