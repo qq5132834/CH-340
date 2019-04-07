@@ -42,8 +42,27 @@ wifi.ap.config(cfg)
 httpServer:listen(80)
 
 
+
+
+
+---------------------------
+----socket client
+---------------------------
 nodemcuClient = nil
 nodemcuClientRequest = 0
+
+httpServer:use('/closeClient', function(req,res)
+
+     if(nodemcuClient == nil ) then
+
+     else
+        nodemcuClient:close()
+     end
+     nodemcuClient = nil
+     res:type('application/json')
+     res:send('{"status":"yes"}')
+end)
+
 httpServer:use('/createClient', function(req,res)
 
     serverIP = req.query.serverIP
@@ -58,12 +77,14 @@ httpServer:use('/createClient', function(req,res)
         nodemcuClient:connect(port,serverIP)
         nodemcuClient:on("receive", function(sck, data)          
             print(data)
+            -- nodemcuClient:send(data .. "  helloWorld.")
         end)
         nodemcuClient:on("connection",function(sck,data)
             print("p2p-connected")
             res:type('application/json')
             res:send('{"status":"yes"}')
             nodemcuClientRequest = 1
+
         end)
         nodemcuClient:on("disconnection",function(sck,data)
             nodemcuClient = nil
