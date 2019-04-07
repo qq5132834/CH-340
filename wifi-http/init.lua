@@ -51,6 +51,41 @@ httpServer:listen(80)
 nodemcuClient = nil
 nodemcuClientRequest = 0
 
+httpServer:use('/getClient',function(req,res)
+    
+    if(nodemcuClient == nil ) then
+
+     else
+        serverPort, serverIP = nodemcuClient:getpeer()
+        clientPort, clientIP = nodemcuClient:getaddr()
+     end
+
+     if(serverPort == nil) then
+        serverPort = ""
+     end
+
+     if(serverIP == nil) then
+        serverIP = ""
+     end
+
+     if(clientPort == nil) then
+        clientPort = ""
+     end
+
+     if(clientIP == nil) then
+        clientIP = ""
+     end
+
+     res:type('application/json')
+     res:send('{'..
+            '"serverIP":"'.. serverIP .. '",'..
+            '"serverPort":"'.. serverPort ..'",'..
+            '"clientIP":"'.. clientIP .. '",'.. 
+            '"clientPort":"'..clientPort ..'"' ..
+            '}')
+     
+end)
+
 httpServer:use('/closeClient', function(req,res)
 
      if(nodemcuClient == nil ) then
