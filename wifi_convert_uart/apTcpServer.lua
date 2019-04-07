@@ -20,6 +20,7 @@ function apTcpServer.createServer()
                 --print("huangliao.")
            end
            print(data)
+          
            --client:send("hi,i'm from esp8266.\n")
        end)
 

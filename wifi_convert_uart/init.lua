@@ -1,49 +1,38 @@
 --require("stringUtil")
 require("nodemcuInit")
-require("apTcpServer")
+-- require("apTcpServer")
+require("httpServer")
 --require("socketServer")
 
 nodemcuInit.init()
-apTcpServer.createServer()
-
---创建一个socketServer服务器
---socketServer.createServer()
-
---local list = stringUtil.split("hello=world","=")
---print(list[1])
---print(list[2])
-
---print("\n")
---print("ESP8266 Started")
-
---
+--apTcpServer.createServer()
 
 
 
+httpServer:listen(80)
 
----将lua对象转成字符串
---Sharp = { id=1,name="huangliao",age=31} 
+-- Custom API
+-- Get text/html
+httpServer:use('/welcome', function(req, res)
+    print("welcome")
+    res:send('Hello ' .. req.query.name) -- /welcome?name=doge
+end)
 
---ok, json = pcall(sjson.encode, Sharp)
---if ok then
---  print(json)
---else
---  print("failed to encode!")
---end
+-- Get file
+httpServer:use('/doge', function(req, res)
+    res:sendFile('doge.jpg')
+end)
 
---将字符串转成lua table
---str='{"name":"huangliaossssss","id":1,"age":30}'
---t = sjson.decode(str)
---for k,v in pairs(t) do 
---    print(k,v) 
---end
+-- Get json
+httpServer:use('/json', function(req, res)
+    res:type('application/json')
+    res:send('{"doge": "smile"}')
+end)
 
---print(t.name)
-
-
-
-
-
+-- Redirect
+httpServer:use('/redirect', function(req, res)
+    res:redirect('doge.jpg')
+end)
 
 
 
