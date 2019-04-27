@@ -77,44 +77,44 @@ void UART_Control_hl()
     }
     if (comdata.length() > 0)
     {
-        Serial.println(comdata);        
+        //Serial.println(comdata);        
 
         if(comdata.startsWith("font")){
           //向前
-          Serial.println("pingan-font");
+          //Serial.println("pingan-font");
           preUARCmd = millis();
           Drive_Num=GO_ADVANCE;
           
         }
         else if(comdata.startsWith("back")){
           //向后
-          Serial.println("pingan-back");
+          //Serial.println("pingan-back");
           preUARCmd = millis();
           Drive_Num=GO_BACK;
           
         }
         else if(comdata.startsWith("left")){
           //向左转       
-          Serial.println("pingan-left");
+          //Serial.println("pingan-left");
           preUARCmd = millis()-800;
           Drive_Num=GO_LEFT;
           
         }
         else if(comdata.startsWith("right")){
           //向右转
-          Serial.println("pingan-right");
+          //Serial.println("pingan-right");
           preUARCmd = millis()-800;
           Drive_Num=GO_RIGHT;
           
         }else if(comdata.startsWith("stop")){
           //停止 
-          Serial.println("pingan-stop");
+          //Serial.println("pingan-stop");
           preUARCmd = millis();
           Drive_Num=STOP_STOP;
           
         }else if(comdata.startsWith("open")){
           //停止 
-          Serial.println("pingan-open");
+          //Serial.println("pingan-open");
           turnOpen();
         }
         comdata = "";
@@ -123,7 +123,7 @@ void UART_Control_hl()
     if(millis() - preUARCmd >= 1000)
     {     
            preUARCmd = millis();
-          Serial.println("timeOut-stop");
+          //Serial.println("timeOut-stop");
           Drive_Num=STOP_STOP;
     }
     
@@ -205,8 +205,8 @@ void loop()
   UART_Control_hl();
   CAR_Control();//小车控制
 
-  renti(); //人体传感器
-  //bizhang(); //小车避障
+//  renti(); //人体传感器
+//  bizhang(); //小车避障
 //  lajitong(); //垃圾桶满传感器
   
 }
