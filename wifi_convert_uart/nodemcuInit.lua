@@ -20,7 +20,6 @@ function nodemcuInit.init()
     wifi.setmode(wifi.STATIONAP)
     wifi.ap.setip(cfo)
     wifi.ap.config(cfg)
---    print("The module is AP + station.")
 end
 
 
