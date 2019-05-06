@@ -16,13 +16,21 @@ function apTcpServer.createServer()
            if(myclient==nil) then
                 myclient=client
            else
-              -- 
+                
            end
+
+           if(myclient~=nil) then
+               -- print("pingan")
+                uart.write(0, data)
+           else
+                
+           end
+           
                    
        end)
 
        connection:on("connection",function(client,data)
-           myclient=client         
+           myclient=client      
            uart.on("data",'\n', function(data)
                 if(myclient~=nil) then
                     myclient:send(data)

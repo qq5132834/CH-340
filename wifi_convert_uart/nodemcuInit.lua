@@ -5,7 +5,7 @@ nodemcuInit = {}
 --
 cfg={}
 cfg.ssid="ESP8266-AP"
-cfg.pwd="1234567890"
+cfg.pwd="0123456789"
 
 --
 cfo={
