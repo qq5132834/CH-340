@@ -16,7 +16,8 @@ ledPIN=4
 
 function apTcpServer.createServer()
 
-    gpio.mode(ledPIN, gpio.OUTPUT)
+    gpio.mode(ledPIN, gpio.OUTPUT)    
+    
     ap_server=net.createServer(net.TCP)
     ap_server:listen(1010,function(connection)
 
