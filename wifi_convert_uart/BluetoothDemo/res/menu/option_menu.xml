@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:id="@+id/scan"
+          android:title="@string/connect" />
+    
+   <item android:id="@+id/arduino_image"
+          android:title="@string/arduino_image" />
+
+      <item android:id="@+id/arduino_document"
+          android:title="@string/arduino_document" />
+   
+</menu>
