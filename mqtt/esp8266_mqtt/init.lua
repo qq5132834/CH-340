@@ -2,7 +2,7 @@ configwifissid = "604";
 configwifipwd="A13322980216";
 MqttUserString = "nodemcu";
 MqttPwdString = "123456"; 
-MqttIPString = "192.168.40.132";
+MqttIPString = "192.168.0.112";
 MqttPort = 1883;
 
 clientid = wifi.sta.getmac()
