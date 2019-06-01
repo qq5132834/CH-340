@@ -1,0 +1,8 @@
+1、nodemcu中mqtt源代码
+
+2、固件下载,编译自己的固件，注意要选择mqtt模块
+https://nodemcu-build.com/
+
+3、固件API使用
+https://nodemcu.readthedocs.io/en/master/en/modules/gpio/
+
