@@ -32,7 +32,15 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
 
-
+/***
+ * 
+ * @author:  大聊
+ * @Package:  org.jmqtt.remoting.netty
+ * @ClassName:  NettyRemotingServer
+ * @Description:  mqtt服务器
+ * @date:  2019年6月2日 上午12:51:22
+ * @email: 513283439@qq.com
+ */
 public class NettyRemotingServer implements RemotingServer {
 
     private static final Logger log = LoggerFactory.getLogger(LoggerName.REMOTING);
@@ -69,9 +77,11 @@ public class NettyRemotingServer implements RemotingServer {
         //Netty event excutor start
         this.nettyEventExcutor.start();
         // start TCP 1883 server
+        log.info("start TCP 1883 server");
         startTcpServer();
         // start Websocket server
         if(nettyConfig.isStartWebsocket()){
+        	log.info("start Websocket server");
             startWebsocketServer();
         }
     }
@@ -113,6 +123,9 @@ public class NettyRemotingServer implements RemotingServer {
         }
     }
 
+    /***
+     * 开始1883的tcp服务器
+     */
     private void startTcpServer(){
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(selectorGroup,ioGroup)

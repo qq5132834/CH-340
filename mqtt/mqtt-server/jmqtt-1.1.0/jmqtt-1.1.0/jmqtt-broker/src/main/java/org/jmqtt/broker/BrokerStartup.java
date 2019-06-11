@@ -49,7 +49,8 @@ public class BrokerStartup {
         if(StringUtils.isEmpty(jmqttHome)){
             jmqttHome = brokerConfig.getJmqttHome();
         }
-        jmqttHome = "F:/git-code/jmqtt-1.1.0/jmqtt-1.1.0/jmqtt-distribution";
+        //修改路径
+        jmqttHome = "F:/git-code/CH-340/mqtt/mqtt-server/jmqtt-1.1.0/jmqtt-1.1.0/jmqtt-distribution";
         if(StringUtils.isEmpty(jmqttHome)){
             throw new Exception("please set JMQTT_HOME.");
         }

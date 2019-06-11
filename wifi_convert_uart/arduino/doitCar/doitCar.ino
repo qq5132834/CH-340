@@ -20,8 +20,8 @@
 //控制电机运动    宏定义
 #define MOTOR_GO_FORWARD  {digitalWrite(PIN_8,HIGH); digitalWrite(PIN_9,LOW);  digitalWrite(PIN_6,HIGH); digitalWrite(PIN_7,LOW);  }   //车体前进                              
 #define MOTOR_GO_BACK     {digitalWrite(PIN_8,LOW);  digitalWrite(PIN_9,HIGH); digitalWrite(PIN_6,LOW);  digitalWrite(PIN_7,HIGH);  }   //车体后退
-#define MOTOR_GO_LEFT     {digitalWrite(PIN_8,HIGH);  digitalWrite(PIN_9,LOW); digitalWrite(PIN_6,LOW);  digitalWrite(PIN_7,LOW);   }   //车体左转
-#define MOTOR_GO_RIGHT    {digitalWrite(PIN_8,LOW); digitalWrite(PIN_9,LOW);  digitalWrite(PIN_6,HIGH);  digitalWrite(PIN_7,LOW); }   //车体右转
+#define MOTOR_GO_LEFT     {digitalWrite(PIN_8,HIGH);  digitalWrite(PIN_9,LOW); digitalWrite(PIN_6,LOW);  digitalWrite(PIN_7,HIGH);   }   //车体左转
+#define MOTOR_GO_RIGHT    {digitalWrite(PIN_8,LOW); digitalWrite(PIN_9,HIGH);  digitalWrite(PIN_6,HIGH);  digitalWrite(PIN_7,LOW); }   //车体右转
 #define MOTOR_GO_STOP     {digitalWrite(PIN_8,LOW);  digitalWrite(PIN_9,LOW);  digitalWrite(PIN_7,LOW);  digitalWrite(PIN_6,LOW);  }   //车体静止
 //串口接收处理
 #define MAX_PACKETSIZE 32  //串口接收缓冲区
@@ -96,14 +96,14 @@ void UART_Control_hl()
         else if(comdata.startsWith("left")){
           //向左转       
           //Serial.println("pingan-left");
-          preUARCmd = millis()-800;
+          preUARCmd = millis();//-800;
           Drive_Num=GO_LEFT;
           
         }
         else if(comdata.startsWith("right")){
           //向右转
           //Serial.println("pingan-right");
-          preUARCmd = millis()-800;
+          preUARCmd = millis();//-800;
           Drive_Num=GO_RIGHT;
           
         }else if(comdata.startsWith("stop")){
@@ -153,7 +153,7 @@ void IO_init()
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   IO_init();
 
 }

@@ -5,6 +5,15 @@ import io.netty.channel.ChannelHandlerContext;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/***
+ * 
+ * @author:  大聊
+ * @Package:  org.jmqtt.remoting.session
+ * @ClassName:  ClientSession
+ * @Description:  客户端会话session
+ * @date:  2019年6月2日 上午12:19:35
+ * @email: 513283439@qq.com
+ */
 public class ClientSession {
 
     private String clientId;
@@ -53,7 +62,7 @@ public class ClientSession {
 
     public int generateMessageId(){
         int messageId = messageIdCounter.getAndIncrement();
-        messageId = Math.abs( messageId % 0xFFFF);
+        messageId = Math.abs( messageId % 0xFFFF); //十六机制0xFFFF等于十进制65535
         if(messageId == 0){
             return generateMessageId();
         }

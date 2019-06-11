@@ -1,3 +1,5 @@
+require("uart")
+
 Mymqtt = mqtt.Client(clientid, 120,MqttUserString, MqttPwdString);
 
 tmr.alarm(3, 1000, 1, function()
@@ -23,9 +25,17 @@ Mymqtt:on("message", function(client, topic, data)
     if data == "off" then
        print("I am off") 
     elseif data == "on"  then    
-      print("I am on") 
-    mqttClient:publish(PublishTopic,10086, 0, 0, function(client)  
-    end)   
+        print("I am on") 
+        mqttClient:publish(PublishTopic,10086, 0, 0, function(client)  
+        end)
+    elseif data == "font"  then
+        print(data)
+    elseif data == "back"  then
+        print(data)
+    elseif data == "left"  then
+        print(data)
+    elseif data == "right"  then
+       print(data)
     end
 end)
 

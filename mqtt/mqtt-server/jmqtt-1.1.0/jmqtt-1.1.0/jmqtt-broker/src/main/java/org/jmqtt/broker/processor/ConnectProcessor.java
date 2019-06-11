@@ -23,7 +23,15 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
-
+/***
+ * 
+ * @author:  大聊
+ * @Package:  org.jmqtt.broker.processor
+ * @ClassName:  ConnectProcessor
+ * @Description:  客户端会话连接处理类
+ * @date:  2019年6月2日 上午12:32:58
+ * @email: 513283439@qq.com
+ */
 public class ConnectProcessor implements RequestProcessor {
 
     private static final Logger log = LoggerFactory.getLogger(LoggerName.CLIENT_TRACE);
